@@ -1,0 +1,46 @@
+.nav {
+    overflow: hidden;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .nav a {
+    text-align: center;
+    font-size: 12px;
+    text-decoration: none;
+    background-color: lightgrey;
+    color: #0047be;
+  }
+  
+  a:hover{
+    background-color: #fbd291;
+  }
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 70px auto;
+  grid-row-start: 1;
+  grid-row-end: 15;
+  grid-row-gap: 45px;
+  
+}
+
+.home-tab {
+  grid-column: 1;
+  grid-row: 15;
+}
+
+.shared-tab {
+  grid-column: 2;
+  grid-row: 15;
+}
+
+.loc-tab {
+  grid-column: 3;
+  grid-row: 15;
+}
+
+.shop-tab {
+  grid-column: 4;
+  grid-row: 15;
+}
