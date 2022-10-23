@@ -26,7 +26,58 @@
             <div id = "list" class = "header">
                 <h2>My Fridge</h2>
 
-                <div class="searchclass">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
+
+                <div>
+                    <table id="myTable">
+                    <tr class="header">
+                        <th style="width:60%;">Food Item</th>
+                        <th style="width:40%;">Expiration Date</th>
+                    </tr>
+                    <tr>
+                        <td>Cheese</td>
+                        <td>10 days</td>
+                    </tr>
+                    <tr>
+                        <td>Bread</td>
+                        <td>5 days</td>
+                    </tr>
+                    <tr>
+                        <td>Cucumber</td>
+                        <td>1 day</td>
+                    </tr>
+                    <tr>
+                        <td>Baguette</td>
+                        <td>2 days</td>
+                    </tr>
+                    </table>
+
+                </div>
+
+                <script>
+                    function myFunction() {
+                      // Declare variables
+                      var input, filter, table, tr, td, i, txtValue;
+                      input = document.getElementById("myInput");
+                      filter = input.value.toUpperCase();
+                      table = document.getElementById("myTable");
+                      tr = table.getElementsByTagName("tr");
+                    
+                      // Loop through all table rows, and hide those who don't match the search query
+                      for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[0];
+                        if (td) {
+                          txtValue = td.textContent || td.innerText;
+                          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                          } else {
+                            tr[i].style.display = "none";
+                          }
+                        }
+                      }
+                    }
+                    </script>
+                <!-- <div class="searchclass">
                     <input id="searchbar" onkeyup="search()" type="text" placeholder="Search...">
                 </div>
 
@@ -41,8 +92,9 @@
                     <li class="food">Crumbs</li>
                     <li class="food">Pickles</li>
                 </ol>
-            </div>
-            <a href="#" class="home-tab"><h3>Home</h3></a>
+            </div> -->
+        </div>
+            <a href="index.html" class="home-tab"><h3>Home</h3></a>
             <a href="shareditem.html" class="shared-tab"><h3>Shared Items</h3></a>
             <a href="#" class="loc-tab"><h3>Locations</h3></a>
             <a href="#" class="shop-tab"><h3>Shopping Lists</h3></a>
