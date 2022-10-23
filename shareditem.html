@@ -22,10 +22,12 @@
             <div style="text-align: center; padding: 2% 0;">
                 <h1>Shared Items</h1>
                 <div class="searchclass">
-                    <input id="searchbar" onkeyup="search()" type="text" placeholder="Search for a food item..">
+                    <input id="searchbar" onkeyup="searchKeyPress()" type="text" placeholder="Search for a food item..">
+                    <input type="button" id="btnSearch" Value="Search" onclick="doSomething()" />
                 </div>
 
                 <button onClick="changeUser()">change user</button>
+                <button onClick="resetTable()">show all</button>
 
                 <head>
                     <!--could have if statement to switch between users?-->
@@ -62,8 +64,8 @@
                             return curr_user;
                         }
 
-                        // JavaScript code
-                        function search() {
+                        function searchKeyPress(e)
+                        {
                             let input = document.getElementById('searchbar').value
                             input=input.toLowerCase();
                             let x = document.getElementsByClassName('food');
@@ -76,13 +78,63 @@
                                     x[i].style.display="list-item";                 
                                 }
                             }
+                            
+                            // look for window.event in case event isn't passed in
+                            e = e || window.event;
+                            if (e.keyCode == 13)
+                            {
+                                document.getElementById('btnSearch').click();
+                                return false;
+                            }
+                            return true;
                         }
+
+                        function resetTable() {
+                            table = document.getElementById("table");
+                            tr = table.getElementsByTagName("tr");
+
+                            for (i = 1; i < tr.length; i++) {
+                                tr[i].style.display = "";
+                                
+                            }
+                        }
+
+                        function doSomething() {
+                            document.getElementById("test").innerHTML = document.getElementById('searchbar').value;
+                            
+                            filter = document.getElementById('searchbar').value.toLowerCase();
+
+                            table = document.getElementById("table");
+                            tr = table.getElementsByTagName("tr");
+
+                         //   var x = document.getElementById("table").rows[1].cells;
+                         //       x[0].innerHTML = "NEW CONTENT";
+
+                            // Loop through all table rows, and hide those who don't match the search query
+                            for (i = 1; i < tr.length; i++) {
+                                td = table.rows[i].cells[1];
+                                
+                                
+                                if (td) {
+                                    txtValue = td.innerHTML.toLowerCase();
+                                    document.getElementById("test2").innerHTML = txtValue;
+                                    if (txtValue == filter) {
+                                        tr[i].style.display = "";
+                                    } else {
+                                        tr[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        }
+
                     </script>
                   
                 <!--<script>var x = document.getElementById("search");</script> NEED SOME WAY TO IDENTIFIY FOOD ITEM-->
                 <body onload="currUser()">
                   
                     <h3 id="currUserHeader">Log a new purchase as <span id="currUser"></span></h3>
+                    <h3 id="currUserHeader">Log a new purchase as <span id="test"></span></h3>
+                    <h3 id="currUserHeader">Log a new purchase as <span id="test2"></span></h3>
                   
                 </body>
                   <!--working list-->
@@ -107,7 +159,10 @@
                     document.getElementById('form').reset()
                     return false; // stop submission
                   }
+
                 </script>
+
+
                 
 <!--'list'-->
                 <form id="form" onsubmit="return addRow('table', this.inputItem, this.quantity, this.purchaseDate, this.expirationDate)"> 
@@ -118,89 +173,10 @@
                   <input type="submit">
                 
                 </form>
-<!--prob will delete
-                <b>Simple form with name and age ...</b>
-<table>
-    <tr>
-        <td>Name:</td>
-        <td><input type="text" id="name"></td>
-    </tr>
-    <tr>
-        <td>Age:</td>
-        <td><input type="text" id="age">
-        <input type="button" id="add" value="Add" onclick="Javascript:addRow()"></td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-</table>
-</div>
-<div id="mydata">
-<b>Current data in the system ...</b>
-<table id="myTableData"  border="1" cellpadding="2">
-    <tr>
-        <td>&nbsp;</td>
-        <td><b>Name</b></td>
-        <td><b>Age</b></td>
-    </tr>
-</table>
-&nbsp;
- 
-</div>
-<div id="myDynamicTable">
-    Javascript:addTable()
-</div>-->
-<!--might delete
-<script>
-    function addRow() {
-          
-          var myName = document.getElementById("name");
-          var age = document.getElementById("age");
-          var table = document.getElementById("myTableData");
-       
-          var rowCount = table.rows.length;
-          var row = table.insertRow(rowCount);
-       
-          row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
-          row.insertCell(1).innerHTML= myName.value;
-          row.insertCell(2).innerHTML= age.value;
-       
-      }
-       
-      function deleteRow(obj) {
-            
-          var index = obj.parentNode.parentNode.rowIndex;
-          var table = document.getElementById("myTableData");
-          table.deleteRow(index);
-          
-      }
-       
-      function addTable() {
-            
-          var myTableDiv = document.getElementById("myDynamicTable");
-            
-          var table = document.createElement('TABLE');
-          table.border='1';
-          
-          var tableBody = document.createElement('TBODY');
-          table.appendChild(tableBody);
-            
-          for (var i=0; i<3; i++){
-             var tr = document.createElement('TR');
-             tableBody.appendChild(tr);
-             
-             for (var j=0; j<4; j++){
-                 var td = document.createElement('TD');
-                 td.width='75';
-                 td.appendChild(document.createTextNode("Cell " + i + "," + j));
-                 tr.appendChild(td);
-             }
-          }
-          myTableDiv.appendChild(table);
-          
-      }-->
+
 </script>
+
+
 
                 <h3>Purchase History</h3>
                 
@@ -208,7 +184,7 @@
                 
                 </ul>
 
-                <table id="table">
+                <table id="table" class="table">
                     <tr>
                       <th>Name</th>
                       <th>Item</th>
@@ -228,6 +204,24 @@
 
     <!-- SEARCH BAR STYLE -->
     <style>
+
+.table {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+#table th, #table td {
+  text-align: left; /* Left-align text */
+  padding: 12px; /* Add padding */
+}
+
+#table tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+}
+
     /* Style the search box inside the navigation bar */
     .searchclass input[type=text] {
     float: none;
