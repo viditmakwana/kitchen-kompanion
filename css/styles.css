@@ -4,7 +4,7 @@
     width: 100%;
   }
   
-  .nav a {
+  /* .nav a {
     text-align: center;
     font-size: 12px;
     text-decoration: none;
@@ -14,33 +14,37 @@
   
   a:hover{
     background-color: #fbd291;
-  }
+  } */
 
 .wrapper {
   display: grid;
-  grid-template-columns: 70px auto;
+  grid-template-columns: 0px auto;
   grid-row-start: 1;
   grid-row-end: 15;
   grid-row-gap: 45px;
-  
 }
 
-.home-tab {
-  grid-column: 1;
-  grid-row: 15;
+.search{
+  text-align: center;
+  width: 60%;
+  padding-left: 45px;
+} 
+
+.buttons{
+  text-align: center;
+  padding-bottom: 20px;
 }
 
-.shared-tab {
-  grid-column: 2;
-  grid-row: 15;
+.nav-button{
+  text-align: center;
+  font-size: 12px;
+  text-decoration: none;
+  background-color: lightgrey;
+  color: #0047be;
+  transition-duration: 0.4s;
+  padding: 1px 1px;
 }
 
-.loc-tab {
-  grid-column: 3;
-  grid-row: 15;
-}
-
-.shop-tab {
-  grid-column: 4;
-  grid-row: 15;
+.nav-button:hover {
+  background-color: #fbd291;
 }

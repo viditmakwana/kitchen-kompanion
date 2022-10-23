@@ -21,12 +21,21 @@
     </header>
 
     <main>
+        <div class="buttons">
+            <button class="nav-button" onclick="location.href='index.html'"><h3>Home</h3></button>
+            <button class="nav-button" onclick="location.href='shareditem.html'"><h3>Shared Items</h3></button>
+            <button class="nav-button" onclick="location.href=''"><h3>Locations</h3></button>
+            <button class="nav-button" onclick="location.href=''"><h3>Shopping Lists</h3></button>
+        </div>
+        
         <div class="nav wrapper" style="border-style: solid; overflow-y: auto; width: 25%; height: 45em; margin: 0 auto; margin-top: 10px; border-radius: 25px;">
             <br>
             <div id = "list" class = "header">
                 <h2>My Fridge</h2>
 
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
+                <div class = "search">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
+                </div>
 
                 <div>
                     <table id="myTable">
@@ -77,27 +86,7 @@
                       }
                     }
                     </script>
-                <!-- <div class="searchclass">
-                    <input id="searchbar" onkeyup="search()" type="text" placeholder="Search...">
-                </div>
-
-                <br>
-                <br>
-                <br>
-                <ol id='foodList' class="foodList">
-                    <li class="food">Meat</li>
-                    <li class="food">Bread</li>
-                    <li class="food">Apple</li>
-                    <li class="food">Spam</li>
-                    <li class="food">Crumbs</li>
-                    <li class="food">Pickles</li>
-                </ol>
-            </div> -->
-        </div>
-            <a href="index.html" class="home-tab"><h3>Home</h3></a>
-            <a href="shareditem.html" class="shared-tab"><h3>Shared Items</h3></a>
-            <a href="#" class="loc-tab"><h3>Locations</h3></a>
-            <a href="#" class="shop-tab"><h3>Shopping Lists</h3></a>
+        </div> 
         </div>
     </main>
 </body>
