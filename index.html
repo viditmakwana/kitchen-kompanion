@@ -11,15 +11,37 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Comfortaa" />
     <link rel="stylesheet" type="text/css" href="css/fonts.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Kitchen Kompanion</title>
 </head>
 <body>
+    <script type="text/javascript" src="index.js"></script>
     <header>
         <div style="text-align: center;"> <h1> Kitchen Kompanion </h1> </div>
     </header>
 
     <main>
         <div class="nav wrapper" style="border-style: solid; overflow-y: auto; width: 25%; height: 45em; margin: 0 auto; margin-top: 10px; border-radius: 25px;">
+            <br>
+            <div id = "list" class = "header">
+                <h2>My Fridge</h2>
+
+                <div class="searchclass">
+                    <input id="searchbar" onkeyup="search()" type="text" placeholder="Search...">
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <ol id='foodList' class="foodList">
+                    <li class="food">Meat</li>
+                    <li class="food">Bread</li>
+                    <li class="food">Apple</li>
+                    <li class="food">Spam</li>
+                    <li class="food">Crumbs</li>
+                    <li class="food">Pickles</li>
+                </ol>
+            </div>
             <a href="#" class="home-tab"><h3>Home</h3></a>
             <a href="shareditem.html" class="shared-tab"><h3>Shared Items</h3></a>
             <a href="#" class="loc-tab"><h3>Locations</h3></a>
