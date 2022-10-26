@@ -80,7 +80,7 @@ function search() {
   }
 }
 
-
+/*               Add Ingredient                */
 
 function ownerDropDown() {
   var space = document.getElementById("owner-dropdown");
@@ -141,6 +141,13 @@ function expDate() {
   month.setAttribute("name", "month");
   month.setAttribute("id", "month-drop");
 
+  op = document.createElement("option");
+  op.setAttribute("value", "");
+  op.disabled = true;
+  op.selected = true;
+  op.hidden = true;
+  op.textContent = "MM";
+  month.appendChild(op);
   for (i = 0; i < months.length; i++) {
     op = document.createElement("option");
     op.setAttribute("value", months[i]);
@@ -152,6 +159,13 @@ function expDate() {
   day.setAttribute("name", "day");
   day.setAttribute("id", "day-drop");
 
+  op = document.createElement("option");
+  op.setAttribute("value", "");
+  op.disabled = true;
+  op.selected = true;
+  op.hidden = true;
+  op.textContent = "DD";
+  day.appendChild(op);
   for (i = 0; i < days.length; i++) {
     op = document.createElement("option");
     op.setAttribute("value", days[i]);
@@ -163,6 +177,13 @@ function expDate() {
   year.setAttribute("name", "year");
   year.setAttribute("id", "year-drop");
 
+  op = document.createElement("option");
+  op.setAttribute("value", "");
+  op.disabled = true;
+  op.selected = true;
+  op.hidden = true;
+  op.textContent = "YYYY";
+  year.appendChild(op);
   for (i = 0; i < years.length; i++) {
     op = document.createElement("option");
     op.setAttribute("value", years[i]);
@@ -205,7 +226,7 @@ function addIngredient() {
     diff = Math.ceil(diff / (1000 * 3600 * 24));
     diff = diff + 1; // math is 1 day off
 
-    if (diff < 0) {
+    if (isNaN(diff) || diff < 0) {
       alert("Enter a valid date!")
     } else {
       ingredients.set(inputValue, [date, USERS[0], LOCATIONS[0]]);
@@ -268,6 +289,9 @@ function addPopup() {
   var popup = document.getElementById("popup");
   popup.setAttribute("style", "opacity: 1; visibility: visible;");
 }
+
+
+/*                   Shared Items                 */
 
 
 function changeUser() {
