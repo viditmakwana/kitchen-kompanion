@@ -32,6 +32,10 @@
     background-color: #fbd291;
   }
 
+  .clickable {
+    cursor: pointer;
+  }
+
   /* Styling the add button to be next to the search bar*/
   .add-button {
     position: absolute;
