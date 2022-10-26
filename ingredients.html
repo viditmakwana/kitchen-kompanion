@@ -34,7 +34,7 @@
     <script> 
         var params = new URLSearchParams(location.search);
         document.getElementById("ingredientName").innerHTML = params.get('name');
-        document.getElementById("expirationDate").innerHTML = "Expires in: " + params.get('expiry');
+        document.getElementById("expirationDate").innerHTML = "Expires in: " + params.get('expiry') + " days";
     </script>
 
 </body>

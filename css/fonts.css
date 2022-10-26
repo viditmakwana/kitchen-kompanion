@@ -22,6 +22,6 @@ button {
     cursor: pointer;
 }
 
-select {
+select, input {
     font-family: 'Comfortaa';
 }

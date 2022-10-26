@@ -46,38 +46,16 @@
                 <div id="popup" class="add-popup">
                     <button type="button" class="close-button" onclick="removePopup()"><span>x</span></button>
                     <h1 style="padding-top: 10px;">Add a New Ingredient!</h1>
-                    <h3 style="padding-top: 10px; padding-left: 5px;">Ingredient: </h3>
-                    <div id="dropdown"><script>showDropDown()</script></div>
-                    <h3 style="padding-top: 40px; padding-left: 5px;">Expiration Date: </h3>
-                    <h3 style="padding-top: 40px; padding-left: 5px;">Location: </h3>
+                    <h3 style="padding-top: 10px; padding-left: 5px;">Ingredient: <input id="ingredient-name" type="text"></h3>
+                    <div id="owner-dropdown"><script>ownerDropDown()</script></div>
+                    <div id="exp-date"><script>expDate()</script></div>
+                    <div id="loc-dropdown"><script>locationDropDown()</script></div>
+                    <div style="text-align: center;"><button type="button" onclick="addIngredient()" class="submit" style="font-size: 16px;">Add</button></div>
                 </div>
 
                 <div>
                     <table id="myTable">
-                    <tr class="header">
-                        <th style="width:60%;">Food Item</th>
-                        <th style="width:40%;">Expiration Date</th>
-                    </tr>
-                    <tr class="clickable "
-                    onclick="location.href='ingredients.html'+'?name='+'Cheese'+'&expiry='+'10 days';">
-                        <td>Cheese</td>
-                        <td>10 days</td>
-                    </tr>
-                    <tr class="clickable "
-                    onclick="location.href='ingredients.html'+'?name='+'Bread'+'&expiry='+'5 days';">
-                        <td>Bread</td>
-                        <td>5 days</td>
-                    </tr>
-                    <tr class="clickable "
-                    onclick="location.href='ingredients.html'+'?name='+'Cucumber'+'&expiry='+'1 day';">
-                        <td>Cucumber</td>
-                        <td>1 day</td>
-                    </tr>
-                    <tr class="clickable "
-                    onclick="location.href='ingredients.html'+'?name='+'Baguette'+'&expiry='+'2 days';">
-                        <td>Baguette</td>
-                        <td>2 days</td>
-                    </tr>
+                    <script>listIngredients()</script>
                     </table>
 
                 </div>

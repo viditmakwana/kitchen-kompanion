@@ -1,4 +1,11 @@
 const USERS = ["Sally", "Andrew", "Margot"];
+const LOCATIONS = ["Fridge", "Cabinet"];
+var ingredients = new Map();
+ingredients.set("Cheese", ["2022-11-04", USERS[0], LOCATIONS[0]]);
+ingredients.set("Bread", ["2022-10-31", USERS[1], LOCATIONS[1]]);
+ingredients.set("Cucumber", ["2022-10-27", USERS[0], LOCATIONS[0]]);
+ingredients.set("Baguette", ["2022-10-28", USERS[0], LOCATIONS[1]]);
+
 var curr_user = USERS[0];
 
 // Create a "close" button and append it to each list item
@@ -59,7 +66,7 @@ function newElement() {
 
 // JavaScript code
 function search() {
-  let input = document.getElementById('searchbar').value
+  let input = document.getElementById('searchbar').value;
   input = input.toLowerCase();
   let x = document.getElementsByClassName('food');
 
@@ -75,15 +82,15 @@ function search() {
 
 
 
-function showDropDown() {
-  var space = document.getElementById("dropdown");
+function ownerDropDown() {
+  var space = document.getElementById("owner-dropdown");
   owner = document.createElement("h3");
   owner.textContent = "Owner: ";
   owner.setAttribute("style", "padding-top: 40px; padding-left: 5px;")
 
   drop = document.createElement("select");
   drop.setAttribute("name", "owner");
-  drop.setAttribute("id", "drop");
+  drop.setAttribute("id", "owner-drop");
 
   for (i = 0; i < USERS.length; i++) {
     op = document.createElement("option");
@@ -97,14 +104,169 @@ function showDropDown() {
 
 }
 
+function locationDropDown() {
+  var space = document.getElementById("loc-dropdown");
+  loc = document.createElement("h3");
+  loc.textContent = "Location: ";
+  loc.setAttribute("style", "padding-top: 40px; padding-left: 5px;")
+
+  drop = document.createElement("select");
+  drop.setAttribute("name", "location");
+  drop.setAttribute("id", "loc-drop");
+
+  for (i = 0; i < LOCATIONS.length; i++) {
+    op = document.createElement("option");
+    op.setAttribute("value", LOCATIONS[i]);
+    op.textContent = LOCATIONS[i];
+    drop.appendChild(op);
+  }
+  
+  loc.appendChild(drop);
+  space.appendChild(loc);
+
+}
+
+function expDate() {
+  var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+  var days = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", 
+              "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26",
+              "27", "28", "29", "30", "31"];
+  var years = ["2022", "2023", "2024", "2025", "2026"];
+  var space = document.getElementById("exp-date");
+  exp = document.createElement("h3");
+  exp.textContent = "Expiration Date: ";
+  exp.setAttribute("style", "padding-top: 40px; padding-left: 5px;")
+
+  month = document.createElement("select");
+  month.setAttribute("name", "month");
+  month.setAttribute("id", "month-drop");
+
+  for (i = 0; i < months.length; i++) {
+    op = document.createElement("option");
+    op.setAttribute("value", months[i]);
+    op.textContent = months[i];
+    month.appendChild(op);
+  }
+
+  day = document.createElement("select");
+  day.setAttribute("name", "day");
+  day.setAttribute("id", "day-drop");
+
+  for (i = 0; i < days.length; i++) {
+    op = document.createElement("option");
+    op.setAttribute("value", days[i]);
+    op.textContent = days[i];
+    day.appendChild(op);
+  }
+
+  year = document.createElement("select");
+  year.setAttribute("name", "year");
+  year.setAttribute("id", "year-drop");
+
+  for (i = 0; i < years.length; i++) {
+    op = document.createElement("option");
+    op.setAttribute("value", years[i]);
+    op.textContent = years[i];
+    year.appendChild(op);
+  }
+
+  exp.appendChild(month);
+  exp.appendChild(day);
+  exp.appendChild(year);
+
+  space.appendChild(exp);
+
+}
+
+function addIngredient() {
+  var inputValue = document.getElementById("ingredient-name").value;
+  if (inputValue === '') {
+    alert("You must enter an ingredient!");
+  } else {
+    var owner = document.getElementById("owner-drop");
+    owner = owner.options[owner.selectedIndex].value;
+
+    var day = document.getElementById("day-drop");
+    day = day.options[day.selectedIndex].value;
+
+    var month = document.getElementById("month-drop");
+    month = month.options[month.selectedIndex].value;
+
+    var year = document.getElementById("year-drop");
+    year = year.options[year.selectedIndex].value;
+
+    var loc = document.getElementById("loc-drop");
+    loc = loc.options[loc.selectedIndex].value;
+
+    date = year + "-" + month + "-" + day;
+    exp = new Date(date);
+    today = new Date();
+    diff = exp.getTime() - today.getTime();
+    diff = Math.ceil(diff / (1000 * 3600 * 24));
+    diff = diff + 1; // math is 1 day off
+
+    if (diff < 0) {
+      alert("Enter a valid date!")
+    } else {
+      ingredients.set(inputValue, [date, USERS[0], LOCATIONS[0]]);
+      removePopup();
+      listIngredients();
+    }
+  }
+  
+
+}
+
+function listIngredients() {
+  var table = document.getElementById("myTable").innerHTML = "";
+  table = document.getElementById("myTable");
+  tr = document.createElement("tr");
+  tr.className = "header";
+  th = document.createElement("th");
+  th.setAttribute = ("style", "width:60%;");
+  var txt = document.createTextNode("Food Item");
+  th.appendChild(txt);
+  tr.appendChild(th);
+  th = document.createElement("th");
+  th.setAttribute = ("style", "width:40%;");
+  var txt = document.createTextNode("Expiration Date");
+  th.appendChild(txt);
+  tr.appendChild(th);
+  table.appendChild(tr);
+
+  for (let i = 0; i < ingredients.size; i++) {
+    tr = document.createElement("tr");
+    tr.className = "clickable";
+    ing = [...ingredients][i][0];
+    exp = new Date([...ingredients][i][1][0]);
+    today = new Date();
+    diff = exp.getTime() - today.getTime();
+    diff = Math.ceil(diff / (1000 * 3600 * 24));
+    diff = diff + 1; // math is 1 day off
+    onclk = `location.href='ingredients.html'+'?name='+'${ing}'+'&expiry='+'${diff}';`;
+    tr.setAttribute("onclick", onclk);
+    td = document.createElement("td");
+    txt = document.createTextNode(ing);
+    td.appendChild(txt);
+    tr.appendChild(td);
+    td = document.createElement("td");
+    txt = document.createTextNode(diff + " days");
+    td.appendChild(txt);
+    tr.appendChild(td);
+    table.appendChild(tr);
+  }
+
+}
+
+
 function removePopup() {
   var popup = document.getElementById("popup");
-  popup.setAttribute("style", "opacity: 0;");
+  popup.setAttribute("style", "opacity: 0; visibility: hidden;");
 }
 
 function addPopup() {
   var popup = document.getElementById("popup");
-  popup.setAttribute("style", "opacity: 1;");
+  popup.setAttribute("style", "opacity: 1; visibility: visible;");
 }
 
 

@@ -53,6 +53,7 @@
     left: 50%;
     margin-left: -40px;
     opacity: 0;
+    visibility: hidden;
     transition: opacity 0.3s;
     font-size: 10px;
   }
@@ -72,6 +73,7 @@
   /* Making the message be visible when hovering over the add button */
   .add-button:hover .tooltip {
     opacity: 1;
+    visibility: visible;
   }
 
   .add-popup {
@@ -85,6 +87,7 @@
     top: 350px;
     border-radius: 6px;
     opacity: 0;
+    visibility: hidden;
     transition: opacity 0.3s;
   }
 
