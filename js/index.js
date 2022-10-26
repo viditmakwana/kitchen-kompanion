@@ -219,14 +219,15 @@ function addIngredient() {
     var loc = document.getElementById("loc-drop");
     loc = loc.options[loc.selectedIndex].value;
 
-    date = year + "-" + month + "-" + day;
-    exp = new Date(date);
-    today = new Date();
-    diff = exp.getTime() - today.getTime();
-    diff = Math.ceil(diff / (1000 * 3600 * 24));
-    diff = diff + 1; // math is 1 day off
+    date = month + "-" + day + "-" + year;
+    exp = new Date(date).setUTCHours(0, 0, 0, 0);
+    today = new Date().setUTCHours(0, 0, 0, 0);
+    diff = (exp >= today);
+    console.log(exp);
+    console.log(today);
+    console.log(diff);
 
-    if (isNaN(diff) || diff < 0) {
+    if (isNaN(diff) || !diff) {
       alert("Enter a valid date!")
     } else {
       ingredients.set(inputValue, [date, USERS[0], LOCATIONS[0]]);
@@ -234,6 +235,8 @@ function addIngredient() {
       listIngredients();
     }
   }
+
+  console.log(diff)
   
 
 }
@@ -259,11 +262,10 @@ function listIngredients() {
     tr = document.createElement("tr");
     tr.className = "clickable";
     ing = [...ingredients][i][0];
-    exp = new Date([...ingredients][i][1][0]);
-    today = new Date();
-    diff = exp.getTime() - today.getTime();
+    exp = new Date([...ingredients][i][1][0]).setUTCHours(0, 0, 0, 0);
+    today = new Date().setUTCHours(0, 0, 0, 0);
+    diff = exp - today;
     diff = Math.ceil(diff / (1000 * 3600 * 24));
-    diff = diff + 1; // math is 1 day off
     onclk = `location.href='ingredients.html'+'?name='+'${ing}'+'&expiry='+'${diff}';`;
     tr.setAttribute("onclick", onclk);
     td = document.createElement("td");
