@@ -7,6 +7,8 @@
     <!-- Stylesheets -->
     <!-- If we want to use the Bulma CSS framework -->  
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> -->
+    <!-- Icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Playfair Display" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Comfortaa" />
     <link rel="stylesheet" type="text/css" href="css/fonts.css" />
@@ -15,7 +17,7 @@
     <title>Kitchen Kompanion</title>
 </head>
 <body>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <header>
         <div style="text-align: center;"> <h1> Kitchen Kompanion </h1> </div>
     </header>
@@ -35,6 +37,19 @@
 
                 <div class = "search">
                     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
+                    <button type="button" class="add-button" onclick="addPopup()">
+                        <i class="fa fa-plus"></i>
+                        <span class="tooltip">Add Ingredient!</span>
+                    </button>
+                </div>
+
+                <div id="popup" class="add-popup">
+                    <button type="button" class="close-button" onclick="removePopup()"><span>x</span></button>
+                    <h1 style="padding-top: 10px;">Add a New Ingredient!</h1>
+                    <h3 style="padding-top: 10px; padding-left: 5px;">Ingredient: </h3>
+                    <div id="dropdown"><script>showDropDown()</script></div>
+                    <h3 style="padding-top: 40px; padding-left: 5px;">Expiration Date: </h3>
+                    <h3 style="padding-top: 40px; padding-left: 5px;">Location: </h3>
                 </div>
 
                 <div>

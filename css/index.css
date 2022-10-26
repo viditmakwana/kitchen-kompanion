@@ -4,7 +4,7 @@
     background-repeat: no-repeat; /* Do not repeat the icon image */
     width: 100%; /* Full-width */
     font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 12px 40px; /* Add some padding */
+    padding: 12px 5px 12px 20px; /* Add some padding */
     border: 1px solid #ddd; /* Add a grey border */
     margin-bottom: 12px; /* Add some space below the input */
   }
@@ -30,4 +30,68 @@
   #myTable tr.header, #myTable tr:hover {
     /* Add a grey background color to the table header and on hover */
     background-color: #fbd291;
+  }
+
+  /* Styling the add button to be next to the search bar*/
+  .add-button {
+    position: absolute;
+    top: 220px;
+    left: 58%;
+    font-size: 30px;
+    line-height: 12px;
+  }
+
+  /* Styling the message to be displayed before hovering over the add button (shouldn't be visible) */
+  .tooltip {
+    width: 80px;
+    background-color: #555;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -40px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 10px;
+  }
+
+  /* Styling the arrow below the message */
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Making the message be visible when hovering over the add button */
+  .add-button:hover .tooltip {
+    opacity: 1;
+  }
+
+  .add-popup {
+    position: absolute;
+    z-index: 9; /* overlap div */
+    border: #555;
+    height: 400px;
+    width: 300px;
+    background-color: lightgrey;
+    left: 600px;
+    top: 350px;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    font-size: 14px;
+    line-height: 14px;
   }
