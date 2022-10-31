@@ -126,6 +126,79 @@ function locationDropDown() {
 
 }
 
+function purchDate() {
+  var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+  var days = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", 
+              "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26",
+              "27", "28", "29", "30", "31"];
+  var years = ["2022", "2023", "2024", "2025", "2026"];
+  var space = document.getElementById("purch-date");
+  purch = document.createElement("h3");
+  purch.textContent = "Purchase Date: ";
+  purch.setAttribute("style", "padding-top: 40px; padding-left: 5px;")
+
+  month = document.createElement("select");
+  month.setAttribute("name", "pmonth");
+  month.setAttribute("id", "pmonth-drop");
+
+  op = document.createElement("option");
+  op.setAttribute("value", "");
+  op.disabled = true;
+  op.selected = true;
+  op.hidden = true;
+  op.textContent = "MM";
+  month.appendChild(op);
+  for (i = 0; i < months.length; i++) {
+      op = document.createElement("option");
+      op.setAttribute("value", months[i]);
+      op.textContent = months[i];
+      month.appendChild(op);
+  }
+
+  day = document.createElement("select");
+  day.setAttribute("name", "pday");
+  day.setAttribute("id", "pday-drop");
+
+  op = document.createElement("option");
+  op.setAttribute("value", "");
+  op.disabled = true;
+  op.selected = true;
+  op.hidden = true;
+  op.textContent = "DD";
+  day.appendChild(op);
+  for (i = 0; i < days.length; i++) {
+      op = document.createElement("option");
+      op.setAttribute("value", days[i]);
+      op.textContent = days[i];
+      day.appendChild(op);
+  }
+
+  year = document.createElement("select");
+  year.setAttribute("name", "pyear");
+  year.setAttribute("id", "pyear-drop");
+
+  op = document.createElement("option");
+  op.setAttribute("value", "");
+  op.disabled = true;
+  op.selected = true;
+  op.hidden = true;
+  op.textContent = "YYYY";
+  year.appendChild(op);
+  for (i = 0; i < years.length; i++) {
+      op = document.createElement("option");
+      op.setAttribute("value", years[i]);
+      op.textContent = years[i];
+      year.appendChild(op);
+  }
+
+  purch.appendChild(month);
+  purch.appendChild(day);
+  purch.appendChild(year);
+
+  space.appendChild(purch);
+
+}
+
 function expDate() {
   var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
   var days = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", 
@@ -294,8 +367,6 @@ function addPopup() {
 
 
 /*                   Shared Items                 */
-
-
 function changeUser() {
   if (curr_user == "Sally") {
     curr_user = USERS[1];
