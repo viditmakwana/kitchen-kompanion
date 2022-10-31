@@ -22,6 +22,7 @@
     </header>
 
     <main>
+        <button onClick="changeUser()">change user</button>
         <div style="border-style: solid; overflow-y: auto; width: 25%; height: 45em; margin: 0 auto; margin-top: 10px; border-radius: 25px;">
             <div style="text-align: center; padding: 2% 0;">
                 <h1>Shared Items</h1>
@@ -45,7 +46,7 @@
                     <div style="text-align: center;"><button type="button" onclick="addSharedItem()" class="submit" style="font-size: 18px; margin-top: 20px;">Add</button></div>
                 </div> 
                 <br>
-                <button onClick="changeUser()">change user</button>
+                
                 <button onClick="resetTable()">show all</button>
 
                 <head>
@@ -58,7 +59,7 @@
                         <li class="food">Apple</li>
                     </ol>
                     <body onload="currUser()">
-                        <h3 id="currUserHeader">Log a new purchase as <span id="test"></span></h3>
+                  <!--     <h3 id="currUserHeader">Log a new purchase as <span id="test"></span></h3>--> 
                     </body>
                   <!--working list-->
                     <script>
@@ -71,8 +72,8 @@
                             } else {
                                 curr_user = "Sally";
                             }
-                            var elem = document.getElementById("test");
-                            elem.innerHTML = "Log a new purchase as " + curr_user;
+                          //  var elem = document.getElementById("test");
+                           // elem.innerHTML = "Log a new purchase as " + curr_user;
                         }
 
                         function currUser() {
@@ -195,7 +196,7 @@
                             var table = document.getElementById(table);
 
                             var table = document.getElementById("table");
-                            document.getElementById("test").innerHTML = getCurrUser();
+                          //  document.getElementById("test").innerHTML = getCurrUser();
                         
                             var rowCount = table.rows.length;
                             var row = table.insertRow(1);// (rowCount);
@@ -282,13 +283,14 @@
   border-collapse: collapse; /* Collapse borders */
   width: 100%; /* Full-width */
   border: 1px solid #ddd; /* Add a grey border */
-  font-size: 18px; /* Increase font-size */
+  font-size: 14px; /* Increase font-size */
   background-color: #feedd3;
 }
 
 #table th, #table td {
   text-align: left; /* Left-align text */
-  padding: 12px; /* Add padding */
+  padding: 11px; /* Add padding */
+  font-family: Arial;
 }
 
 #table tr {
@@ -329,6 +331,8 @@
     #table tr.header, #table tr:hover {
     /* Add a grey background color to the table header and on hover */
     background-color:  #fbd291;
+    font-size: 12px;
+    font-family: Arial;
   }
 
   .clickable {
