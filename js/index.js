@@ -637,6 +637,14 @@ function addRow(list, inputItem, inputQty, shared, inputExpDate) {
    // row.setAttribute("onclick", showOwner());
     addRowHandlers(owner);
 
+    /* clear input after adding row */
+    document.getElementById('ingredient-name').value = '';
+    document.getElementById('quantity-name').value = '';
+    document.getElementById('shared').checked = false;
+    document.getElementById('year-drop').selectedIndex = 0;
+    document.getElementById('month-drop').selectedIndex = 0;
+    document.getElementById('day-drop').selectedIndex = 0;
+
     return false; // stop submission
 }
 
