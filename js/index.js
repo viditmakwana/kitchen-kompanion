@@ -523,7 +523,7 @@ function addSharedItem() {
         if (document.getElementById("shared").checked) {
           shared = "yes";
         } else {
-          shared = "";
+          shared = "no";
         }
 
         date = month + "-" + day + "-" + year;
@@ -617,7 +617,7 @@ function removeOwner() {
   popup.setAttribute("style", "opacity: 0; visibility: hidden;");
 }
 
-function addRow(list, inputItem, inputQty, inputPurchDate, inputExpDate) { 
+function addRow(list, inputItem, inputQty, shared, inputExpDate) { 
     var table = document.getElementById(table);
 
     var table = document.getElementById("table");
@@ -631,7 +631,7 @@ function addRow(list, inputItem, inputQty, inputPurchDate, inputExpDate) {
     row.insertCell(0).innerHTML= inputItem;
 
     row.insertCell(1).innerHTML= inputQty;
-    row.insertCell(2).innerHTML= inputPurchDate;
+    row.insertCell(2).innerHTML= shared;
     row.insertCell(3).innerHTML= inputExpDate;
 
    // row.setAttribute("onclick", showOwner());
