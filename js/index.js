@@ -630,6 +630,7 @@ function addRow(list, inputItem, inputQty, shared, inputExpDate) {
     owner = getCurrUser();
     row.insertCell(0).innerHTML= inputItem;
 
+    /* shows exp date in days */
     exp = new Date(inputExpDate).setUTCHours(0, 0, 0, 0);
     today = new Date().setUTCHours(0, 0, 0, 0);
     diff = exp - today;
@@ -650,7 +651,6 @@ function addRow(list, inputItem, inputQty, shared, inputExpDate) {
     addRowHandlers(owner);
 
 
-
     /* clear input after adding row */
     document.getElementById('ingredient-name').value = '';
     document.getElementById('quantity-name').value = '';
@@ -666,7 +666,7 @@ function addRowHandlers(owner) {
   var table = document.getElementById("table");
   var rows = table.getElementsByTagName("tr");
   //for (i = 1; i < rows.length; i++) {
-      var currentRow = table.rows[1];
+      var currentRow = table.rows[1]; // since only the topmost row is updated
       var createClickHandler = 
           function(row) 
           {
