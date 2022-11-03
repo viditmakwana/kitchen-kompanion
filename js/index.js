@@ -539,7 +539,7 @@ function addSharedItem() {
         } else {
             ingredients.set(inputValue, [date, USERS[0], LOCATIONS[0]]);
             removePopup();
-            addRow('table', inputValue, qty, shared, day + "/" + month + "/" + year);
+            addRow('table', inputValue, qty, shared, month + "-" + day + "-" + year);
          //   listIngredients(true, inputValue, pmonth + "-" + pday + "-" + pyear);
         }
 
@@ -630,12 +630,26 @@ function addRow(list, inputItem, inputQty, shared, inputExpDate) {
     owner = getCurrUser();
     row.insertCell(0).innerHTML= inputItem;
 
+    exp = new Date(inputExpDate).setUTCHours(0, 0, 0, 0);
+    today = new Date().setUTCHours(0, 0, 0, 0);
+    diff = exp - today;
+    diff = Math.ceil(diff / (1000 * 3600 * 24));
+    txt = "";
+
+    if (diff == 1) {
+      txt += "1 day";
+    } else {
+      txt += diff + " days";
+    }
+    
     row.insertCell(1).innerHTML= inputQty;
     row.insertCell(2).innerHTML= shared;
-    row.insertCell(3).innerHTML= inputExpDate;
+    row.insertCell(3).innerHTML= txt; //inputExpDate;
 
    // row.setAttribute("onclick", showOwner());
     addRowHandlers(owner);
+
+
 
     /* clear input after adding row */
     document.getElementById('ingredient-name').value = '';
