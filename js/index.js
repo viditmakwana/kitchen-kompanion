@@ -550,15 +550,20 @@ function addSharedItem() {
 function searchKeyPress(e) {
     let input = document.getElementById('searchbar').value
     input=input.toLowerCase();
-   // let x = document.getElementsByClassName('food');
+    table = document.getElementById("table");
+    tr = table.getElementsByTagName("tr");
     
-   /* for (i = 0; i < x.length; i++) { 
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].style.display="none";
+    // Loop through all table rows, and hide those who don't match the search query
+   /* for (i = 1; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
         }
-        else {
-            x[i].style.display="list-item";                 
-        }
+      }
     }*/
 
     // look for window.event in case event isn't passed in
@@ -596,8 +601,12 @@ function doSomething() {
 
         if (td) {
             txtValue = td.innerHTML.toLowerCase();
+            equalEnough = false;
+            if (txtValue == filter || txtValue.substring(0, filter.length) == filter || filter.substring(0, txtValue.length) == txtValue ) {
+              equalEnough = true;
+            }
             
-            if (txtValue == filter) {
+            if (equalEnough) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
