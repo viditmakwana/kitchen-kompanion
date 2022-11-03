@@ -641,7 +641,7 @@ function addRow(list, inputItem, inputQty, shared, inputExpDate) {
     } else {
       txt += diff + " days";
     }
-    
+
     row.insertCell(1).innerHTML= inputQty;
     row.insertCell(2).innerHTML= shared;
     row.insertCell(3).innerHTML= txt; //inputExpDate;
@@ -665,8 +665,8 @@ function addRow(list, inputItem, inputQty, shared, inputExpDate) {
 function addRowHandlers(owner) {
   var table = document.getElementById("table");
   var rows = table.getElementsByTagName("tr");
-  for (i = 1; i < rows.length; i++) {
-      var currentRow = table.rows[i];
+  //for (i = 1; i < rows.length; i++) {
+      var currentRow = table.rows[1];
       var createClickHandler = 
           function(row) 
           {
@@ -679,5 +679,5 @@ function addRowHandlers(owner) {
           };
 
       currentRow.onclick = createClickHandler(currentRow);
-  }
+ // }
 }
