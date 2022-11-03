@@ -305,8 +305,13 @@ function addIngredient() {
     } else {
       ingredients.set(inputValue, [date, USERS[0], LOCATIONS[0]]);
       removePopup();
-      listIngredients();
+      listIngredients(false, null, null);
     }
+
+    var qtyName = document.getElementById('quantity-name');
+
+    // 👇️ clear input field
+    qtyName.value = '';
   }
 
   console.log(diff)
@@ -314,7 +319,7 @@ function addIngredient() {
 
 }
 
-function listIngredients() {
+function listIngredients(addShared, sharedItem, sharedExp) {
   var table = document.getElementById("myTable").innerHTML = "";
   table = document.getElementById("myTable");
   tr = document.createElement("tr");
@@ -352,6 +357,28 @@ function listIngredients() {
     table.appendChild(tr);
   }
 
+  /* Add shared item to table */
+  /* STILL NEED TO SET INGREDIENTS IN THE MAP like ingredients.set("Baguette", ["2022-10-28", USERS[0], LOCATIONS[1]]);  */
+  if (addShared) {
+    tr = document.createElement("tr");
+    tr.className = "clickable";
+    exp = new Date(sharedExp).setUTCHours(0, 0, 0, 0);
+    today = new Date().setUTCHours(0, 0, 0, 0);
+    diff = sharedExp - today;
+    diff = Math.ceil(diff / (1000 * 3600 * 24));
+    onclk = `location.href='ingredients.html'+'?name='+'${sharedItem}'+'&expiry='+'${diff}';`;
+    tr.setAttribute("onclick", onclk);
+    td = document.createElement("td");
+    txt = document.createTextNode(sharedItem);
+    td.appendChild(txt);
+    tr.appendChild(td);
+    td = document.createElement("td");
+    txt = document.createTextNode(diff + " days");
+    td.appendChild(txt);
+    tr.appendChild(td);
+    table.appendChild(tr);
+  }
+
 }
 
 
@@ -367,7 +394,7 @@ function addPopup() {
 
 
 /*                   Shared Items                 */
-function changeUser() {
+/*function changeUser() {
   if (curr_user == "Sally") {
     curr_user = USERS[1];
   } else if (curr_user == "Andrew") {
@@ -449,5 +476,186 @@ function doSomething() {
               tr[i].style.display = "none";
           }
       }
+  }
+}
+*/
+var curr_user = "Sally";
+function changeUser() {
+    if (curr_user == "Sally") {
+        curr_user = USERS[1];
+    } else if (curr_user == "Andrew") {
+        curr_user = USERS[2];
+    } else {
+        curr_user = "Sally";
+    }
+  //  var elem = document.getElementById("test");
+   // elem.innerHTML = "Log a new purchase as " + curr_user;
+}
+
+function currUser() {
+document.getElementById("currUser").innerHTML = curr_user;
+return curr_user;
+}
+
+function getCurrUser() {
+return curr_user;
+}
+
+function addSharedItem() {
+    var inputValue = document.getElementById("ingredient-name").value;
+    ///document.getElementById("test").innerHTML = inputValue;
+    if (inputValue === '') {
+        alert("You must enter an ingredient!");
+    } else {
+        //var owner = document.getElementById("owner-drop");
+        //owner = owner.options[owner.selectedIndex].value;
+        var qty = document.getElementById("quantity-name").value;
+
+        var day = document.getElementById("day-drop");
+        day = day.options[day.selectedIndex].value;
+
+        var month = document.getElementById("month-drop");
+        month = month.options[month.selectedIndex].value;
+
+        var year = document.getElementById("year-drop");
+        year = year.options[year.selectedIndex].value;
+
+        if (document.getElementById("shared").checked) {
+          shared = "yes";
+        } else {
+          shared = "";
+        }
+
+        date = month + "-" + day + "-" + year;
+        exp = new Date(date).setUTCHours(0, 0, 0, 0);
+        today = new Date().setUTCHours(0, 0, 0, 0);
+        diff = (exp >= today);
+        console.log(exp);
+        console.log(today);
+        console.log(diff);
+
+        if (isNaN(diff) || !diff) {
+        alert("Enter a valid date!")
+        } else {
+            ingredients.set(inputValue, [date, USERS[0], LOCATIONS[0]]);
+            removePopup();
+            addRow('table', inputValue, qty, shared, day + "/" + month + "/" + year);
+         //   listIngredients(true, inputValue, pmonth + "-" + pday + "-" + pyear);
+        }
+
+
+    }
+}
+
+function searchKeyPress(e) {
+    let input = document.getElementById('searchbar').value
+    input=input.toLowerCase();
+   // let x = document.getElementsByClassName('food');
+    
+   /* for (i = 0; i < x.length; i++) { 
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="list-item";                 
+        }
+    }*/
+
+    // look for window.event in case event isn't passed in
+    e = e || window.event;
+    if (e.keyCode == 13)
+    {
+        doSomething()
+     //   document.getElementById('btnSearch').click();
+     //   return false;
+    }
+    return true;
+}
+
+function resetTable() {
+    table = document.getElementById("table");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 1; i < tr.length; i++) {
+        tr[i].style.display = "";
+
+    }
+}
+
+function doSomething() {
+    filter = document.getElementById('searchbar').value.toLowerCase();
+
+
+    table = document.getElementById("table");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) {
+        td = table.rows[i].cells[0];
+        
+
+        if (td) {
+            txtValue = td.innerHTML.toLowerCase();
+            
+            if (txtValue == filter) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+function showOwner(owner) {
+  var popup = document.getElementById("owner-popup");
+  document.getElementById("owner").innerHTML = owner;
+  popup.setAttribute("style", "opacity: 1; visibility: visible;");
+}
+
+function removeOwner() {
+  var popup = document.getElementById("owner-popup");
+  popup.setAttribute("style", "opacity: 0; visibility: hidden;");
+}
+
+function addRow(list, inputItem, inputQty, inputPurchDate, inputExpDate) { 
+    var table = document.getElementById(table);
+
+    var table = document.getElementById("table");
+  //  document.getElementById("test").innerHTML = getCurrUser();
+
+    var rowCount = table.rows.length;
+    var row = table.insertRow(1);// (rowCount);
+    
+    // row.insertCell(0).innerHTML= getCurrUser();
+    owner = getCurrUser();
+    row.insertCell(0).innerHTML= inputItem;
+
+    row.insertCell(1).innerHTML= inputQty;
+    row.insertCell(2).innerHTML= inputPurchDate;
+    row.insertCell(3).innerHTML= inputExpDate;
+
+   // row.setAttribute("onclick", showOwner());
+    addRowHandlers(owner);
+
+    return false; // stop submission
+}
+
+function addRowHandlers(owner) {
+  var table = document.getElementById("table");
+  var rows = table.getElementsByTagName("tr");
+  for (i = 1; i < rows.length; i++) {
+      var currentRow = table.rows[i];
+      var createClickHandler = 
+          function(row) 
+          {
+              return function() { 
+                                      var cell = row.getElementsByTagName("td")[0];
+                                      var id = cell.innerHTML;
+                                      showOwner(owner);
+                                      //alert("id:" + id);
+                               };
+          };
+
+      currentRow.onclick = createClickHandler(currentRow);
   }
 }
