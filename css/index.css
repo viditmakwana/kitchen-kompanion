@@ -95,10 +95,176 @@
     transition: opacity 0.3s;
   }
 
-  .close-button {
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    font-size: 14px;
-    line-height: 14px;
+  /* SEARCH BAR AND TABLE STYLE */
+
+  .table {
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 14px; /* Increase font-size */
+    background-color: #feedd3;
   }
+  
+  #table th, #table td {
+    text-align: center; /* Left-align text */
+    padding: 11px; /* Add padding */
+    font-family: Arial;
+  }
+  
+  #table tr {
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Style the search box inside the navigation bar */
+  .searchbar {
+      background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+      background-position: 10px 12px; /* Position the search icon */
+      background-repeat: no-repeat; /* Do not repeat the icon image */
+      width: 60%; /* Full-width */
+      font-size: 14px; /* Increase font-size */
+      padding: 12px 5px 12px 12px; /* Add some padding */
+      border: 1px solid #ddd; /* Add a grey border */
+      margin-bottom: 12px; /* Add some space below the input */
+  }
+  
+  .searchbutton {
+    position: right;
+     /* top: 228px;
+      left: 5%;*/
+      font-size: 25px;
+      line-height: 25px;
+      margin-left: 10px;
+  }
+     /* .searchclass input[type=text] {
+          float: none;
+          padding: 6px;
+          border: #0047be;
+          margin-top: 8px;
+          margin-right: 16px;
+          font-size: 17px;
+      }*/
+  
+      .search{
+          text-align: center;
+          width: 60%;
+          padding-left: 45px;
+      } 
+  
+      .foodList{
+          display:none;  
+      }
+  
+      #table tr.header, #table tr:hover {
+      /* Add a grey background color to the table header and on hover */
+      background-color:  #fbd291;
+      font-size: 15px;
+      font-family: Arial;
+    }
+
+    .clickable {
+      cursor: pointer;
+    }
+  
+    /* Styling the add button to be next to the search bar*/
+    .add-button {
+      position: absolute;
+      top: 350px;
+      left: 59%;
+      font-size: 30px;
+      line-height: 12px;
+    }
+  
+    /* Styling the message to be displayed before hovering over the add button (shouldn't be visible) */
+    .tooltip {
+      width: 80px;
+      background-color: #555;
+      color: #fff;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -40px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
+      font-size: 10px;
+    }
+  
+    /* Styling the arrow below the message */
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+  
+    .changeuser {
+      font-size: 20px;
+      line-height: 20px;
+    }
+  
+    .showall {
+      position: center;
+      /*top: 228px;
+      left: 5%;*/
+      font-size: 20px;
+      line-height: 20px;
+    }
+    
+    /* Making the message be visible when hovering over the add button */
+    .add-button:hover .tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+  
+    .checkbox {
+      position: absolute;
+      top: 173px;
+      left: 65%;
+      height: 20px;
+      width: 20px;
+    }
+  
+    .add-popup {
+      position: absolute;
+      z-index: 9; /* overlap div */
+      border: #555;
+      height: 300px;
+      width: 300px;
+      background-color: lightgrey;
+      left: 600px;
+      top: 340px;
+      border-radius: 6px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
+    }
+  
+    .add-popup2 {
+      position: absolute;
+      z-index: 9; /* overlap div */
+      border: #555;
+      height: 100px;
+      width: 300px;
+      background-color: lightgrey;
+      left: 600px;
+      top: 340px;
+      border-radius: 6px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
+    }
+  
+    .close-button {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      font-size: 20px;
+      line-height: 20px;
+    }
