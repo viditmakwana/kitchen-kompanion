@@ -693,28 +693,3 @@ function addRowHandlers(owner) {
 
 //recipe code
 
-var sandwich = new Array("Bread", "Mayo", "Tomato", "Lettuce", "Ham");
-var omelette = new Array("Eggs", "Cheese", "Tomato", "Milk");
-var fruit = new Array("Apple", "Watermelon", "Orange", "Blueberries");
-
-const sandwich = document.getElementById('sandwich');
-const omelette = document.getElementById('omelette');
-const fruit = document.getElementById('fruit');
-
-function sandwichBut()
- {
-  document.getElementById('header').innerHTML = "working";
-  var check = true;
-
-  sandwich.forEach(function (item, index) {
-    if(!ingredients.has(item)) {
-      check = false;
-    }
-  })
-
-    if(check == false) {
-      document.getElementById('sandwich').style.backgroundColor = 'red';
-      document.getElementById('sandwich').style.color = 'red';
-    }
-    
-}
