@@ -32,7 +32,15 @@
 
 .buttons{
   text-align: center;
-  padding-bottom: 20px;
+  position: absolute;
+  bottom: 1%;
+  left: 41%;
+}
+
+.changeuser{
+  text-align: center;
+  position: relative;
+
 }
 
 .nav-button{
@@ -42,7 +50,6 @@
   background-color: lightgrey;
   color: #0047be;
   transition-duration: 0.4s;
-  padding: 1px 1px;
 }
 
 .recipe-button{

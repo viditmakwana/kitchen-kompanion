@@ -20,15 +20,9 @@
     <header>
         <div style="text-align: center;"> <h1> Kitchen Kompanion </h1> </div>
     </header>
-
+    <button class="changeuser" onClick="changeUser()">change user</button>
     <main>
-        <button class="changeuser" onClick="changeUser()">change user</button>
-
-        <div class="buttons">
-            <button class="nav-button" onclick="location.href='index.html'"><h3>Home</h3></button>
-            <button class="nav-button" onclick="location.href='recipes.html'"><h3>Recipes</h3></button>
-            <button class="nav-button" onclick="location.href=''"><h3>Shopping Lists</h3></button>
-        </div>
+        
 
         <div style="border-style: solid; overflow-y: auto; width: 25%; height: 45em; margin: 0 auto; margin-top: 10px; border-radius: 25px; overflow: hidden;">
             <div style="text-align: center; padding: 2% 0;">
@@ -72,23 +66,7 @@
                   <!--     <h3 id="currUserHeader">Log a new purchase as <span id="test"></span></h3>--> 
                     </body>
                   <!--working list-->
-                    <script>
-                       
-                </script> 
-
-
-                
-<!--'list'
-                <form id="form" onsubmit="return addRow('table', this.inputItem, this.quantity, this.purchaseDate, this.expirationDate)"> 
-                  <input type="text" id="inputItem" placeholder="Item">
-                  <input type="text" id="quantity" placeholder="Qty">
-                  <input type="text" id="purchaseDate" placeholder="Purchase Date (MM/DD/YYYY)">
-                  <input type="text" id="expirationDate" placeholder="Expiration Date (MM/DD/YYYY)">
-                  <input type="submit">
-                
-                </form>-->
-
-</script>
+                  
 
                 <h3>Purchase History</h3>
                 
@@ -130,15 +108,16 @@
 
                   <img src="img/keyboard.jpg" alt="Keybaord" id="keyboard" width="100%" style="top: 201px; position: relative; opacity: 0; visibility: hidden;"/>
                  
-
-                 
-                </div>
                 </body>
-
-            </div>
+              </head>
+          </div>
+          
         </div>
-    </main>
-
-    
+    </main> 
+    <div class="buttons">
+      <button class="nav-button" onclick="location.href='index.html'"><h3>Home</h3></button>
+      <button class="nav-button" onclick="location.href='recipes.html'"><h3>Recipes</h3></button>
+      <button class="nav-button" onclick="location.href=''"><h3>Shopping Lists</h3></button>
+    </div>
 </body>
 </html>
