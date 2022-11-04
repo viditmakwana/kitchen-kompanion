@@ -104,27 +104,29 @@ function ownerDropDown() {
 
 }
 
-function locationDropDown() {
-  var space = document.getElementById("loc-dropdown");
-  loc = document.createElement("h3");
-  loc.textContent = "Location: ";
-  loc.setAttribute("style", "padding-top: 40px; padding-left: 5px;")
+/* LOCATIONS NOT NEEDED RIGHT NOW */
 
-  drop = document.createElement("select");
-  drop.setAttribute("name", "location");
-  drop.setAttribute("id", "loc-drop");
+// function locationDropDown() {
+//   var space = document.getElementById("loc-dropdown");
+//   loc = document.createElement("h3");
+//   loc.textContent = "Location: ";
+//   loc.setAttribute("style", "padding-top: 40px; padding-left: 5px;")
 
-  for (i = 0; i < LOCATIONS.length; i++) {
-    op = document.createElement("option");
-    op.setAttribute("value", LOCATIONS[i]);
-    op.textContent = LOCATIONS[i];
-    drop.appendChild(op);
-  }
+//   drop = document.createElement("select");
+//   drop.setAttribute("name", "location");
+//   drop.setAttribute("id", "loc-drop");
+
+//   for (i = 0; i < LOCATIONS.length; i++) {
+//     op = document.createElement("option");
+//     op.setAttribute("value", LOCATIONS[i]);
+//     op.textContent = LOCATIONS[i];
+//     drop.appendChild(op);
+//   }
   
-  loc.appendChild(drop);
-  space.appendChild(loc);
+//   loc.appendChild(drop);
+//   space.appendChild(loc);
 
-}
+// }
 
 function purchDate() {
   var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
@@ -207,12 +209,13 @@ function expDate() {
   var years = ["2022", "2023", "2024", "2025", "2026"];
   var space = document.getElementById("exp-date");
   exp = document.createElement("h3");
-  exp.textContent = "Expiration Date: ";
-  exp.setAttribute("style", "padding-top: 40px; padding-left: 5px;")
+  exp.textContent = "Exp. Date: ";
+  exp.setAttribute("style", "padding-left: 5px; font-size: 20px;");
 
   month = document.createElement("select");
   month.setAttribute("name", "month");
   month.setAttribute("id", "month-drop");
+  month.setAttribute("style", "font-size: 16px;");
 
   op = document.createElement("option");
   op.setAttribute("value", "");
@@ -231,6 +234,7 @@ function expDate() {
   day = document.createElement("select");
   day.setAttribute("name", "day");
   day.setAttribute("id", "day-drop");
+  day.setAttribute("style", "font-size: 16px;");
 
   op = document.createElement("option");
   op.setAttribute("value", "");
@@ -249,6 +253,7 @@ function expDate() {
   year = document.createElement("select");
   year.setAttribute("name", "year");
   year.setAttribute("id", "year-drop");
+  year.setAttribute("style", "font-size: 16px;");
 
   op = document.createElement("option");
   op.setAttribute("value", "");
@@ -269,6 +274,38 @@ function expDate() {
   exp.appendChild(year);
 
   space.appendChild(exp);
+
+}
+
+function quantity() {
+  var amount = Array.from({length: 50}, (_, i) => i + 1);
+  var space = document.getElementById("quantity-name");
+  quant = document.createElement("h3");
+  quant.setAttribute("style", "font-size: 20px;");
+  quant.textContent = "Quantity: ";
+
+  q = document.createElement("select");
+  q.setAttribute("name", "quantity");
+  q.setAttribute("id", "quant-drop");
+  q.setAttribute("style", "font-size: 20px;");
+
+  op = document.createElement("option");
+  op.setAttribute("value", "");
+  op.disabled = true;
+  op.selected = true;
+  op.hidden = true;
+  op.textContent = "--";
+
+  q.appendChild(op);
+  for (i = 0; i < amount.length; i++) {
+    op = document.createElement("option");
+    op.setAttribute("value", amount[i]);
+    op.textContent = amount[i];
+    q.appendChild(op);
+  }
+
+  quant.appendChild(q);
+  space.appendChild(quant);
 
 }
 
@@ -308,16 +345,22 @@ function addIngredient() {
       listIngredients(false, null, null);
     }
 
-    var qtyName = document.getElementById('quantity-name');
-
-    // 👇️ clear input field
-    qtyName.value = '';
+    var qtyName = document.getElementById('quant-drop');
+    qtyName.options[qtyName.selectedIndex].value;
   }
 
-  console.log(diff)
-  
-
 }
+
+function showKeyboard() {
+  var keyboard = document.getElementById("keyboard");
+  keyboard.setAttribute("style", "top: 201px; position: relative; opacity: 1; visibility: visible;");
+}
+
+function hideKeyboard() {
+  var keyboard = document.getElementById("keyboard");
+  keyboard.setAttribute("style", "opacity: 0; visibility: hidden;");
+}
+
 
 function listIngredients(addShared, sharedItem, sharedExp) {
   var table = document.getElementById("myTable").innerHTML = "";
@@ -351,7 +394,11 @@ function listIngredients(addShared, sharedItem, sharedExp) {
     td.appendChild(txt);
     tr.appendChild(td);
     td = document.createElement("td");
-    txt = document.createTextNode(diff + " days");
+    if (diff < 3) {
+      txt = document.createTextNode(diff + " days!!");
+    } else {
+      txt = document.createTextNode(diff + " days");
+    }
     td.appendChild(txt);
     tr.appendChild(td);
     table.appendChild(tr);
@@ -373,7 +420,11 @@ function listIngredients(addShared, sharedItem, sharedExp) {
     td.appendChild(txt);
     tr.appendChild(td);
     td = document.createElement("td");
-    txt = document.createTextNode(diff + " days");
+    if (diff < 3) {
+      txt = document.createTextNode(diff + " days!!");
+    } else {
+      txt = document.createTextNode(diff + " days");
+    }
     td.appendChild(txt);
     tr.appendChild(td);
     table.appendChild(tr);
@@ -385,11 +436,13 @@ function listIngredients(addShared, sharedItem, sharedExp) {
 function removePopup() {
   var popup = document.getElementById("popup");
   popup.setAttribute("style", "opacity: 0; visibility: hidden;");
+  hideKeyboard();
 }
 
 function addPopup() {
   var popup = document.getElementById("popup");
   popup.setAttribute("style", "opacity: 1; visibility: visible;");
+  showKeyboard();
 }
 
 
@@ -509,7 +562,8 @@ function addSharedItem() {
     } else {
         //var owner = document.getElementById("owner-drop");
         //owner = owner.options[owner.selectedIndex].value;
-        var qty = document.getElementById("quantity-name").value;
+        var qty = document.getElementById('quant-drop');
+        qty = qty.options[qty.selectedIndex].value;
 
         var day = document.getElementById("day-drop");
         day = day.options[day.selectedIndex].value;
@@ -548,7 +602,10 @@ function addSharedItem() {
 }
 
 function searchKeyPress(e) {
-    let input = document.getElementById('searchbar').value
+    let input = document.getElementById('searchbar').value;
+    if (input === "") {
+      hideKeyboard();
+    }
     input=input.toLowerCase();
     table = document.getElementById("table");
     tr = table.getElementsByTagName("tr");
@@ -588,6 +645,7 @@ function resetTable() {
 }
 
 function doSomething() {
+    hideKeyboard();
     filter = document.getElementById('searchbar').value.toLowerCase();
 
 
@@ -644,17 +702,42 @@ function addRow(list, inputItem, inputQty, shared, inputExpDate) {
     today = new Date().setUTCHours(0, 0, 0, 0);
     diff = exp - today;
     diff = Math.ceil(diff / (1000 * 3600 * 24));
-    txt = "";
+
+    exp = document.createElement("div");
+
+    icon1 = document.createElement("i");
+    icon1.setAttribute("style", "padding-left: 10px; color: red; opacity: 0;");
+    icon1.className = "fa fa-exclamation";
+    icon2 = document.createElement("i");
+    icon2.className = "fa fa-exclamation";
+    icon2.setAttribute("style", "color: red; opacity: 0;");
+    icon3 = document.createElement("i");
+    icon3.className = "fa fa-exclamation";
+    icon3.setAttribute("style", "color: red; opacity: 0;");
 
     if (diff == 1) {
-      txt += "1 day";
+      txt = document.createTextNode("1 day");
+      icon1.setAttribute("style", "padding-left: 18px; color: red; opacity: 1;");
+      icon2.setAttribute("style", "color: red; opacity: 1;");
+      icon3.setAttribute("style", "color: red; opacity: 1;");
+    } else if (diff < 2) {
+      txt = document.createTextNode(diff + " days");
+      icon1.setAttribute("style", "padding-left: 12px; color: red; opacity: 1;");
+      icon2.setAttribute("style", "color: red; opacity: 1;");
+      icon3.setAttribute("style", "color: red; opacity: 1;");
     } else {
-      txt += diff + " days";
+      txt = document.createTextNode(diff + " days");
+      exp.appendChild(txt);
     }
+
+    exp.appendChild(txt);
+    exp.appendChild(icon1);
+    exp.appendChild(icon2);
+    exp.appendChild(icon3);
 
     row.insertCell(1).innerHTML= inputQty;
     row.insertCell(2).innerHTML= shared;
-    row.insertCell(3).innerHTML= txt; //inputExpDate;
+    row.insertCell(3).appendChild(exp); //inputExpDate;
 
    // row.setAttribute("onclick", showOwner());
     addRowHandlers(owner);
@@ -662,7 +745,7 @@ function addRow(list, inputItem, inputQty, shared, inputExpDate) {
 
     /* clear input after adding row */
     document.getElementById('ingredient-name').value = '';
-    document.getElementById('quantity-name').value = '';
+    document.getElementById('quant-drop').selectedIndex = 0;
     document.getElementById('shared').checked = false;
     document.getElementById('year-drop').selectedIndex = 0;
     document.getElementById('month-drop').selectedIndex = 0;
