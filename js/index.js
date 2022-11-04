@@ -1,6 +1,10 @@
 const USERS = ["Sally", "Andrew", "Margot"];
 const LOCATIONS = ["Fridge", "Cabinet"];
 var ingredients = new Map();
+var sandwich = new Array("Bread", "Mayo", "Tomato", "Lettuce", "Ham");
+var omelette = new Array("Eggs", "Cheese", "Tomato", "Milk");
+var fruit = new Array("Apple", "Watermelon", "Orange", "Blueberries");
+
 ingredients.set("Cheese", ["2022-11-04", USERS[0], LOCATIONS[0]]);
 ingredients.set("Bread", ["2022-10-31", USERS[1], LOCATIONS[1]]);
 ingredients.set("Cucumber", ["2022-10-27", USERS[0], LOCATIONS[0]]);
@@ -775,14 +779,6 @@ function addRowHandlers(owner) {
 }
 
 //recipe code
-
-var sandwich = new Array("Bread", "Mayo", "Tomato", "Lettuce", "Ham");
-var omelette = new Array("Eggs", "Cheese", "Tomato", "Milk");
-var fruit = new Array("Apple", "Watermelon", "Orange", "Blueberries");
-
-const sandwich = document.getElementById('sandwich');
-const omelette = document.getElementById('omelette');
-const fruit = document.getElementById('fruit');
 
 function sandwichBut()
  {
