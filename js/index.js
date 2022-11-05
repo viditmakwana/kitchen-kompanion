@@ -110,12 +110,6 @@ function ownerDropDown() {
 
 /* LOCATIONS NOT NEEDED RIGHT NOW */
 
-// function locationDropDown() {
-//   var space = document.getElementById("loc-dropdown");
-//   loc = document.createElement("h3");
-//   loc.textContent = "Location: ";
-//   loc.setAttribute("style", "padding-top: 40px; padding-left: 5px;")
-
 //   drop = document.createElement("select");
 //   drop.setAttribute("name", "location");
 //   drop.setAttribute("id", "loc-drop");
@@ -353,14 +347,14 @@ function addIngredient() {
     qtyName.options[qtyName.selectedIndex].value;
   }
 
-}
+  }
 
 function showKeyboard() {
   var keyboard = document.getElementById("keyboard");
   keyboard.setAttribute("style", "top: 201px; position: relative; opacity: 1; visibility: visible;");
   document.getElementById("buttons").setAttribute("style", "opacity: 0; visibility: hidden;");
 }
-
+  
 function hideKeyboard() {
   var keyboard = document.getElementById("keyboard");
   keyboard.setAttribute("style", "opacity: 0; visibility: hidden;");
@@ -403,7 +397,7 @@ function listIngredients(addShared, sharedItem, sharedExp) {
     if (diff < 3) {
       txt = document.createTextNode(diff + " days!!");
     } else {
-      txt = document.createTextNode(diff + " days");
+    txt = document.createTextNode(diff + " days");
     }
     td.appendChild(txt);
     tr.appendChild(td);
@@ -429,7 +423,7 @@ function listIngredients(addShared, sharedItem, sharedExp) {
     if (diff < 3) {
       txt = document.createTextNode(diff + " days!!");
     } else {
-      txt = document.createTextNode(diff + " days");
+    txt = document.createTextNode(diff + " days");
     }
     td.appendChild(txt);
     tr.appendChild(td);
