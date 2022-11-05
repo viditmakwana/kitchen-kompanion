@@ -32,7 +32,44 @@
 
 .buttons{
   text-align: center;
-  padding-bottom: 20px;
+  position: absolute;
+  bottom: 2%;
+  left: 41%;
+}
+
+.changeuser{
+  text-align: center;
+  position: relative;
+
+}
+.home-button{
+  text-align: center;
+  transition-duration: 0.4s;
+  font-size: 40px;
+  text-decoration: none;
+  background-color: lightgrey;
+  color: #0047be;
+  padding: 5px 20px;
+}
+
+.rec-button{
+  text-align: center;
+  transition-duration: 0.4s;
+  font-size: 40px;
+  text-decoration: none;
+  background-color: lightgrey;
+  color: #0047be;
+  padding: 5px 20px;
+}
+
+.shopping-button{
+  text-align: center;
+  transition-duration: 0.4s;
+  font-size: 40px;
+  text-decoration: none;
+  background-color: lightgrey;
+  color: #0047be;
+  padding: 5px 20px;
 }
 
 .nav-button{
@@ -42,7 +79,6 @@
   background-color: lightgrey;
   color: #0047be;
   transition-duration: 0.4s;
-  padding: 1px 1px;
 }
 
 .sandwich-button{
@@ -93,5 +129,17 @@
 }
 
 .nav-button:hover {
+  background-color: #fbd291;
+}
+
+.home-button:hover {
+  background-color: #fbd291;
+}
+
+.rec-button:hover {
+  background-color: #fbd291;
+}
+
+.shopping-button:hover {
   background-color: #fbd291;
 }
