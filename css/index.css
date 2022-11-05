@@ -268,3 +268,11 @@
       font-size: 20px;
       line-height: 20px;
     }
+
+    .close {
+      color: #0047be ;
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 12px 16px 12px 16px;
+    }
