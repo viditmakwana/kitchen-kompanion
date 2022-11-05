@@ -16,33 +16,55 @@
     <title>Kitchen Kompanion</title>
 </head>
 <body>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/shoppinglist.js"></script>
     <header>
         <div style="text-align: center; " id="header"> <h1> Kitchen Kompanion </h1> </div>
     </header>
     <button class="changeuser" onClick="changeUser()">change user</button>
     <main>
-        
-        <div class="nav wrapper" onload="sandwichBut()" style="border-style: solid; overflow-y: auto; width: 25%; height: 45em; margin: 0 auto; margin-top: 10px; border-radius: 25px;">
-            <br>
-            <div id = "list" class = "header">
-                <div id="myDIV" class="header">
-                    <h2>Shopping List</h2>
-                    <input type="text" id="myInput" placeholder="Title...">
-                    <span onclick="newElement()" class="addBtn">Add</span>
-                  </div>
-                  
-                  <ul id="myUL">
-                    <li>Hit the gym</li>
-                    <li class="checked">Pay bills</li>
-                    <li>Meet George</li>
-                    <li>Buy eggs</li>
-                    <li>Read a book</li>
-                    <li>Organize office</li>
-                  </ul>
+        <div class="nav wrapper" style="border-style: solid; overflow-y: auto; width: 25%; height: 45em; margin: 0 auto; margin-top: 10px; border-radius: 25px;">
+          <br>
+            <div>
+                <h2>Shopping List</h2>
+                <input class = "inputBox" type="shoppinglist" id="shoppinglistinput" placeholder="New Entry">
+                <button class="addShopping" onclick="addShoppingItem()"> 
+                  <i class="fa fa-plus"></i>
+                </button>
+                <ul id="ul">
+                  <li>Eggs</li>
+                  <li class="checked">Milk</li>
+                  <li>Cheese</li>
+                  <li>Chicken</li>
+                </ul>
+                <script>
+                  var toDolist = document.getElementsByTagName("LI");
+                  var i;
+                  for (i = 0; i < toDolist.length; i++) {
+                      var span = document.createElement("SPAN");
+                      var txt = document.createTextNode("\u00D7");
+                      span.className = "close";
+                      span.appendChild(txt);
+                      toDolist[i].appendChild(span);
+                  }
+              
+                  var close = document.getElementsByClassName("close");
+                  var i;
+                  for (i = 0; i < close.length; i++) {
+                      close[i].onclick = function() {
+                      var div = this.parentElement;
+                          div.style.display = "none";
+                      }   
+                  }
+              
+                  var list = document.querySelector('ul');
+                  console.log(list);
+                  list.addEventListener('click', function(ev) {
+                      if (ev.target.tagName === 'LI') {
+                          ev.target.classList.toggle('checked');
+                      }
+                  }, false);
+                </script>
             </div>
-
-                
         </div>
     </main>
     <div class="buttons" id = "buttons">
@@ -55,7 +77,7 @@
           <!-- <h3>Recipes</h3> -->
           <i class="fa fa-list"></i>
         </button>
-        <button class="shopping-button" onclick="location.href=''">
+        <button class="shopping-button" onclick="location.href='shoppinglist.html'">
           <!-- <h3>Shopping Lists</h3> -->
           <i class="fa fa-shopping-cart"></i>
         </button>

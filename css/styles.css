@@ -143,3 +143,48 @@
 .shopping-button:hover {
   background-color: #fbd291;
 }
+
+.addShopping{
+  position: right;
+  font-size: 25px;
+  line-height: 25px;
+  margin-left: 10px;
+}
+
+.inputBox {
+  margin-left: 35px;
+  width: 60%; /* Full-width */
+  font-size: 14px; /* Increase font-size */
+  padding: 12px 5px 12px 12px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+ul {
+  margin: 10px;
+  padding: 10px;
+}
+
+ul li {
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  color: #0047be;
+  background: white;
+  font-size: 18px;
+  align-content: center;
+}
+
+ul li.checked {
+  color: #0047be ;
+  background: #fbd291;
+  text-decoration: line-through;
+}
+
+.close {
+  color: #0047be ;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
