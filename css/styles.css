@@ -45,16 +45,51 @@
   padding: 1px 1px;
 }
 
-.recipe-button{
+.sandwich-button{
   text-align: center;
   font-size: 12px;
   text-decoration: none;
   background-color: #feedd3;
-  color: #0047be;
+  color: #7e0909;
   transition-duration: 0.4s;
   padding: 1px 100px;
   margin-left: 38px;
   margin-bottom: 30px;
+}
+
+.fruit-button{
+  text-align: center;
+  font-size: 12px;
+  text-decoration: none;
+  background-color: #feedd3;
+  color: #7e0909;
+  transition-duration: 0.4s;
+  padding: 1px 100px;
+  margin-left: 38px;
+  margin-bottom: 30px;
+}
+
+.omelette-button{
+  text-align: center;
+  font-size: 12px;
+  text-decoration: none;
+  background-color: #feedd3;
+  color: #048a26;
+  transition-duration: 0.4s;
+  padding: 1px 100px;
+  margin-left: 38px;
+  margin-bottom: 30px;
+}
+
+.back-button{
+  text-align: center;
+  font-size: 3px;
+  text-decoration: none;
+  background-color: #feedd3;
+  color: #0047be;
+  transition-duration: 0.4s;
+  position: fixed;
+  top: 155px;
 }
 
 .nav-button:hover {

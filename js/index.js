@@ -6,9 +6,9 @@ var omelette = new Array("Eggs", "Cheese", "Tomato", "Milk");
 var fruit = new Array("Apple", "Watermelon", "Orange", "Blueberries");
 
 ingredients.set("Cheese", ["2022-11-04", USERS[0], LOCATIONS[0]]);
-ingredients.set("Bread", ["2022-10-31", USERS[1], LOCATIONS[1]]);
-ingredients.set("Cucumber", ["2022-10-27", USERS[0], LOCATIONS[0]]);
-ingredients.set("Baguette", ["2022-10-28", USERS[0], LOCATIONS[1]]);
+ingredients.set("Milk", ["2022-10-31", USERS[1], LOCATIONS[1]]);
+ingredients.set("Eggs", ["2022-10-27", USERS[0], LOCATIONS[0]]);
+ingredients.set("Tomato", ["2022-10-28", USERS[0], LOCATIONS[1]]);
 
 var curr_user = USERS[0];
 
