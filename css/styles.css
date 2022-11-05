@@ -42,6 +42,35 @@
   position: relative;
 
 }
+.home-button{
+  text-align: center;
+  transition-duration: 0.4s;
+  font-size: 40px;
+  text-decoration: none;
+  background-color: lightgrey;
+  color: #0047be;
+  padding: 5px 20px;
+}
+
+.rec-button{
+  text-align: center;
+  transition-duration: 0.4s;
+  font-size: 40px;
+  text-decoration: none;
+  background-color: lightgrey;
+  color: #0047be;
+  padding: 5px 20px;
+}
+
+.shopping-button{
+  text-align: center;
+  transition-duration: 0.4s;
+  font-size: 40px;
+  text-decoration: none;
+  background-color: lightgrey;
+  color: #0047be;
+  padding: 5px 20px;
+}
 
 .nav-button{
   text-align: center;
@@ -65,5 +94,9 @@
 }
 
 .nav-button:hover {
+  background-color: #fbd291;
+}
+
+.home-button:hover {
   background-color: #fbd291;
 }

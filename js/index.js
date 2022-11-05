@@ -358,11 +358,13 @@ function addIngredient() {
 function showKeyboard() {
   var keyboard = document.getElementById("keyboard");
   keyboard.setAttribute("style", "top: 201px; position: relative; opacity: 1; visibility: visible;");
+  document.getElementById("buttons").setAttribute("style", "opacity: 0; visibility: hidden;");
 }
 
 function hideKeyboard() {
   var keyboard = document.getElementById("keyboard");
   keyboard.setAttribute("style", "opacity: 0; visibility: hidden;");
+  document.getElementById("buttons").setAttribute("style", "opacity: 1; visibility: visible;");
 }
 
 
