@@ -307,6 +307,11 @@ function quantity() {
 
 }
 
+function editIngredient() {
+  removeOwner();
+  addPopup();
+}
+
 function addIngredient() {
   var inputValue = document.getElementById("ingredient-name").value;
   if (inputValue === '') {
@@ -443,6 +448,18 @@ function addPopup() {
   var popup = document.getElementById("popup");
   popup.setAttribute("style", "opacity: 1; visibility: visible;");
   showKeyboard();
+}
+
+function addRemPopup() {
+  var popup = document.getElementById("rem-popup");
+  popup.setAttribute("style", "opacity: 1; visibility: visible;");
+  showKeyboard();
+}
+
+function removeRemPopup() {
+  var popup = document.getElementById("rem-popup");
+  popup.setAttribute("style", "opacity: 0; visibility: hidden;");
+  hideKeyboard();
 }
 
 
@@ -752,6 +769,46 @@ function addRow(list, inputItem, inputQty, shared, inputExpDate) {
     document.getElementById('day-drop').selectedIndex = 0;
 
     return false; // stop submission
+}
+
+function removeIngredient(index) {
+  document.getElementById("table").deleteRow(index);
+}
+
+function removeSharedItem() {
+
+  filter = document.getElementById('ingredient-name-rem').value.toLowerCase();
+
+
+    table = document.getElementById("table");
+    tr = table.getElementsByTagName("tr");
+    found = false;
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) {
+        td = table.rows[i].cells[0];
+        
+
+        if (td) {
+            txtValue = td.innerHTML.toLowerCase();
+            console.log(txtValue);
+            equalEnough = false;
+            if (txtValue == filter || txtValue.substring(0, filter.length) == filter || filter.substring(0, txtValue.length) == txtValue ) {
+              equalEnough = true;
+            }
+            
+            if (equalEnough) {
+              removeIngredient(i);
+              removeRemPopup();
+              found = true;
+            }
+        }
+    }
+
+    if (!found) {
+      alert("No ingredient found!");
+    }
+  
 }
 
 function addRowHandlers(owner) {
