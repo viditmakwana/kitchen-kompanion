@@ -5,6 +5,7 @@
       var li = document.createElement("li");
       var inputValue = document.getElementById("shoppinglistinput").value;
       var t = document.createTextNode(inputValue);
+      hideKeyboard();
       li.appendChild(t);
       document.getElementById("ul").appendChild(li);
       document.getElementById("shoppinglistinput").value = "";
@@ -23,4 +24,16 @@
           div.style.display = "none";
           }   
       }
+    }
+
+    function showKeyboard() {
+      var keyboard = document.getElementById("keyboard");
+      keyboard.setAttribute("style", "top: 122px; position: relative; opacity: 1; visibility: visible;");
+      document.getElementById("buttons").setAttribute("style", "opacity: 0; visibility: hidden;");
+    }
+      
+    function hideKeyboard() {
+      var keyboard = document.getElementById("keyboard");
+      keyboard.setAttribute("style", "opacity: 0; visibility: hidden;");
+      document.getElementById("buttons").setAttribute("style", "opacity: 1; visibility: visible;");
     }

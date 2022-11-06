@@ -26,7 +26,7 @@
           <br>
             <div>
                 <h2>Shopping List</h2>
-                <input class = "inputBox" type="shoppinglist" id="shoppinglistinput" placeholder="New Entry">
+                <input class = "inputBox" onkeydown="showKeyboard()" type="shoppinglist" id="shoppinglistinput" placeholder="New Entry">
                 <button class="addShopping" onclick="addShoppingItem()"> 
                   <i class="fa fa-plus"></i>
                 </button>
@@ -64,6 +64,7 @@
                       }
                   }, false);
                 </script>
+              <img src="img/keyboard.jpg" alt="Keyboard" id="keyboard" width="100%" style="top: 122px; position: relative; opacity: 0; visibility: hidden;"/>
             </div>
         </div>
     </main>
