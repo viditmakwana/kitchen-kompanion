@@ -209,67 +209,73 @@ function expDate() {
   exp = document.createElement("h3");
   exp.textContent = "Exp. Date: ";
   exp.setAttribute("style", "padding-left: 5px; font-size: 20px;");
+  
+  input = document.createElement("input");
+  input.setAttribute("type", "date");
+  input.setAttribute("value", "2022-12-01");
+  input.setAttribute("style", "font-size: 18px;")
 
-  month = document.createElement("select");
-  month.setAttribute("name", "month");
-  month.setAttribute("id", "month-drop");
-  month.setAttribute("style", "font-size: 16px;");
+  // month = document.createElement("select");
+  // month.setAttribute("name", "month");
+  // month.setAttribute("id", "month-drop");
+  // month.setAttribute("style", "font-size: 16px;");
 
-  op = document.createElement("option");
-  op.setAttribute("value", "");
-  op.disabled = true;
-  op.selected = true;
-  op.hidden = true;
-  op.textContent = "MM";
-  month.appendChild(op);
-  for (i = 0; i < months.length; i++) {
-    op = document.createElement("option");
-    op.setAttribute("value", months[i]);
-    op.textContent = months[i];
-    month.appendChild(op);
-  }
+  // op = document.createElement("option");
+  // op.setAttribute("value", "");
+  // op.disabled = true;
+  // op.selected = true;
+  // op.hidden = true;
+  // op.textContent = "MM";
+  // month.appendChild(op);
+  // for (i = 0; i < months.length; i++) {
+  //   op = document.createElement("option");
+  //   op.setAttribute("value", months[i]);
+  //   op.textContent = months[i];
+  //   month.appendChild(op);
+  // }
 
-  day = document.createElement("select");
-  day.setAttribute("name", "day");
-  day.setAttribute("id", "day-drop");
-  day.setAttribute("style", "font-size: 16px;");
+  // day = document.createElement("select");
+  // day.setAttribute("name", "day");
+  // day.setAttribute("id", "day-drop");
+  // day.setAttribute("style", "font-size: 16px;");
 
-  op = document.createElement("option");
-  op.setAttribute("value", "");
-  op.disabled = true;
-  op.selected = true;
-  op.hidden = true;
-  op.textContent = "DD";
-  day.appendChild(op);
-  for (i = 0; i < days.length; i++) {
-    op = document.createElement("option");
-    op.setAttribute("value", days[i]);
-    op.textContent = days[i];
-    day.appendChild(op);
-  }
+  // op = document.createElement("option");
+  // op.setAttribute("value", "");
+  // op.disabled = true;
+  // op.selected = true;
+  // op.hidden = true;
+  // op.textContent = "DD";
+  // day.appendChild(op);
+  // for (i = 0; i < days.length; i++) {
+  //   op = document.createElement("option");
+  //   op.setAttribute("value", days[i]);
+  //   op.textContent = days[i];
+  //   day.appendChild(op);
+  // }
 
-  year = document.createElement("select");
-  year.setAttribute("name", "year");
-  year.setAttribute("id", "year-drop");
-  year.setAttribute("style", "font-size: 16px;");
+  // year = document.createElement("select");
+  // year.setAttribute("name", "year");
+  // year.setAttribute("id", "year-drop");
+  // year.setAttribute("style", "font-size: 16px;");
 
-  op = document.createElement("option");
-  op.setAttribute("value", "");
-  op.disabled = true;
-  op.selected = true;
-  op.hidden = true;
-  op.textContent = "YYYY";
-  year.appendChild(op);
-  for (i = 0; i < years.length; i++) {
-    op = document.createElement("option");
-    op.setAttribute("value", years[i]);
-    op.textContent = years[i];
-    year.appendChild(op);
-  }
+  // op = document.createElement("option");
+  // op.setAttribute("value", "");
+  // op.disabled = true;
+  // op.selected = true;
+  // op.hidden = true;
+  // op.textContent = "YYYY";
+  // year.appendChild(op);
+  // for (i = 0; i < years.length; i++) {
+  //   op = document.createElement("option");
+  //   op.setAttribute("value", years[i]);
+  //   op.textContent = years[i];
+  //   year.appendChild(op);
+  // }
 
-  exp.appendChild(month);
-  exp.appendChild(day);
-  exp.appendChild(year);
+  // exp.appendChild(month);
+  // exp.appendChild(day);
+  // exp.appendChild(year);
+  exp.appendChild(input);
 
   space.appendChild(exp);
 
@@ -280,7 +286,7 @@ function quantity() {
   var space = document.getElementById("quantity-name");
   quant = document.createElement("h3");
   quant.setAttribute("style", "font-size: 20px;");
-  quant.textContent = "Quantity: ";
+  quant.textContent = "Quantity*: ";
 
   q = document.createElement("select");
   q.setAttribute("name", "quantity");
@@ -356,7 +362,7 @@ function addIngredient() {
 
 function showKeyboard() {
   var keyboard = document.getElementById("keyboard");
-  keyboard.setAttribute("style", "top: 201px; position: relative; opacity: 1; visibility: visible;");
+  keyboard.setAttribute("style", "top: 250px; position: relative; opacity: 1; visibility: visible;");
   document.getElementById("buttons").setAttribute("style", "opacity: 0; visibility: hidden;");
 }
   
@@ -446,7 +452,7 @@ function removePopup() {
 
 function addPopup() {
   var popup = document.getElementById("popup");
-  popup.setAttribute("style", "opacity: 1; visibility: visible;");
+  popup.setAttribute("style", "opacity: 1; visibility: visible; top: 190px;");
   showKeyboard();
 }
 
@@ -652,6 +658,7 @@ function searchKeyPress(e) {
 }
 
 function resetTable() {
+    hideIngredients();
     table = document.getElementById("table");
     tr = table.getElementsByTagName("tr");
 
@@ -661,8 +668,21 @@ function resetTable() {
     }
 }
 
+function showIngredients() {
+  button = document.getElementById("listIng");
+  button.setAttribute("style", "opacity: 1; visibility: visible;");
+
+}
+
+function hideIngredients() {
+  button = document.getElementById("listIng");
+  button.setAttribute("style", "opacity: 0; visibility: hidden;");
+}
+
+
 function doSomething() {
     hideKeyboard();
+    showIngredients();
     filter = document.getElementById('searchbar').value.toLowerCase();
 
 

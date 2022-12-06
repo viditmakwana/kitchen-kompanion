@@ -37,7 +37,7 @@
                     
                 </div>
          
-                <br>
+                
                 <div id="rem-popup" class="add-popup">
                   <button type="button" class="close-button" onclick="removeRemPopup()">x</button>
                   <h1 style="padding-top: 10px;">Remove Ingredient!  </h1>
@@ -47,13 +47,13 @@
                 <div id="popup" class="add-popup">
                     <button type="button" class="close-button" onclick="removePopup()">x</button>
                     <h1 style="padding-top: 10px;">Add a New Ingredient!</h1>
-                    <h3 style="padding-top: 10px; padding-left: 5px; font-size: 16px;"><input id="ingredient-name" style="font-size: 20px;" type="text" placeholder="Ingredient Name"></h3>
+                    <h3 style="padding-top: 10px; padding-left: 5px; font-size: 16px;"><input id="ingredient-name" style="font-size: 20px;" type="text" placeholder="Ingredient Name*"></h3>
                     <div id="quantity-name"><script>quantity()</script></div>
-                    <h3 style="font-size: 20px;">Shared?: <input class="checkbox" type="checkbox" id="shared" style="font-size: 20px;" name="shared"></h3>
+                    <h3 style="font-size: 20px;">Shared?*: <input class="checkbox" type="checkbox" id="shared" style="font-size: 20px;" name="shared"></h3>
                     <div id="exp-date"><script>expDate()</script></div>
                     <div style="text-align: center;"><button type="button" onclick="addSharedItem()" class="submit" style="font-size: 20px;">Add</button></div>
                 </div> 
-                <br>
+                
 
                 <div id="owner-popup" class="add-popup2">
                   <button type="button" class="close-button" onclick="removeOwner()"><span>x</span></button>
@@ -67,12 +67,12 @@
                 </div> 
                 
                 <div style="display: inline-block;">
-                  <button class="showall" onClick="resetTable()" style="margin-right: 10px;">List Ingredients</button>
+                  <!-- <button id="listIng" class="showall" onClick="resetTable()" style="opacity: 0; visibility: hidden;">List Ingredients</button> -->
                   <button class="showall" onclick="addPopup()">Add Ingredient</button>
                 </div>
-                <div style="margin-top: 10px;">
+                <!-- <div style="margin-top: 10px;">
                   <button class="showall" onclick="addRemPopup()">Remove Ingredient</button>
-                </div>
+                </div> -->
                 
 
 
@@ -83,7 +83,7 @@
                   <!--working list-->
                   
 
-                <h3>Purchase History</h3>
+                <!-- <h3>Purchase History</h3> -->
                 
                 <ul id="list">
                 
