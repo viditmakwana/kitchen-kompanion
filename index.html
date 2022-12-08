@@ -28,12 +28,16 @@
             <div style="text-align: center; padding: 2% 0;">
                 <h1>Home</h1>
                 <div class="searchclass">
-                    <input class="searchbar" id="searchbar" onkeydown="showKeyboard()" onkeyup="searchKeyPress()" type="text" placeholder="Search...">
+                    <input class="searchbar" id="searchbar" style="margin-left: -20px; margin-bottom: -40px;" onkeydown="showKeyboard()" onkeyup="searchKeyPress()" type="text" placeholder="Search...">
                    <!--<button class="searchbutton" type="button" id="btnSearch" Value="Search" onclick="doSomething()"> --> 
-                    <button type="button" class="searchbutton" onclick="doSomething()">
+                    <button type="button" class="searchbutton" onclick="doSomething()" style="font-size: 28px; line-height: 32px;">
                       <i class="fa fa-search"></i>
                       <span class="tooltip">Search!</span>
-                    </button> 
+                    </button>
+                    <button type="button" class="showall" onclick="addPopup()" style="font-size: 28px; line-height: 32px; margin-left: 5px;">
+                      <i class="fa fa-plus"></i>
+                      <span class="tooltip">Search!</span>
+                    </button>  
                     
                 </div>
          
@@ -67,8 +71,8 @@
                 </div> 
                 
                 <div style="display: inline-block;">
-                  <!-- <button id="listIng" class="showall" onClick="resetTable()" style="opacity: 0; visibility: hidden;">List Ingredients</button> -->
-                  <button class="showall" onclick="addPopup()">Add Ingredient</button>
+                  <button id="listIng" class="showall" onClick="resetTable()" style="opacity: 0; visibility: hidden;">List Ingredients</button>
+                  <!-- <button class="showall" onclick="addPopup()">Add Ingredient</button> -->
                 </div>
                 <!-- <div style="margin-top: 10px;">
                   <button class="showall" onclick="addRemPopup()">Remove Ingredient</button>

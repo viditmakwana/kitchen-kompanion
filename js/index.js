@@ -362,7 +362,7 @@ function addIngredient() {
 
 function showKeyboard() {
   var keyboard = document.getElementById("keyboard");
-  keyboard.setAttribute("style", "top: 250px; position: relative; opacity: 1; visibility: visible;");
+  keyboard.setAttribute("style", "top: 275px; position: relative; opacity: 1; visibility: visible;");
   document.getElementById("buttons").setAttribute("style", "opacity: 0; visibility: hidden;");
 }
   
@@ -670,7 +670,7 @@ function resetTable() {
 
 function showIngredients() {
   button = document.getElementById("listIng");
-  button.setAttribute("style", "opacity: 1; visibility: visible;");
+  button.setAttribute("style", "opacity: 1; visibility: visible; margin-top: 20px;");
 
 }
 
